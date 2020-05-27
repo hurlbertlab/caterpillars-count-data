@@ -36,7 +36,9 @@ updateCatCountData <- function() {
     select(-Size) %>%
     distinct()
 
-  download.file(paste0(webpage_url, newest_data$Name), newest_data$Name) 
+  for(f in newest_data$Name) {
+    download.file(paste0(webpage_url, f), f) 
+  }
   
   }
 

@@ -12,7 +12,7 @@ updateCatCountData <- function() {
   # Remove old data files
   
   oldfiles <- data.frame(filename = list.files()) %>%
-    filter(grepl("ArthropodSighting.csv", filename) | grepl("Site.csv", filename) | grepl("Plant.csv", filename) | grepl("Survey.csv", filename))
+    filter(grepl(".csv", filename))
   
   unlink(oldfiles$filename)
   
@@ -29,16 +29,17 @@ updateCatCountData <- function() {
          file_type = word(Name, sep = "_", 2),
          date = as.Date(text_date, format = "%Y-%m-%d"))
 
-  newest_data <- links %>%
-    filter(grepl("Arthropod", file_type) | grepl("Site.csv", file_type) | grepl("Plant", file_type) | grepl("Survey", file_type)) %>%
-    filter(date == max(date)) %>%
-    mutate_at(c("Name"), ~ifelse(grepl("Arthropod", file_type), paste0(date, "_", "ArthropodSighting.csv"), Name)) %>%
-    select(-Size) %>%
-    distinct()
-
-  for(f in newest_data$Name) {
+  recent_date = max(links$date, na.rm = TRUE)
+  
+  base_filenames = c("ArthropodQuizQuestions", "CachedResult", "CronJobStatus", "DisputedIdentification",
+                     "Download", "ExpertIdentification", "ManagerRequest", "SiteUserPreset", "SiteUserValidation",
+                     "TemporaryExpertIdentificationChangeLog", "VirtualSurveyScore", "ArthropodSighting", "Plant",
+                     "Site", "Survey")
+  filenames = paste0(recent_date, "_", base_filenames, ".csv")
+  
+  for(f in filenames) {
     download.file(paste0(webpage_url, f), f) 
   }
   
-  }
+}
 

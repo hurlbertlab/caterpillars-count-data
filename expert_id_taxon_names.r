@@ -31,3 +31,5 @@ for (n in uniqueNames$TaxonName) {
 
 
 write.csv(classify, 'classified_expert_identifications.csv', row.names = F)
+
+# A large number of names are not matching with ITIs. Possibly use rinat package to query the name and get the info that way instead.

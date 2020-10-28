@@ -19,13 +19,13 @@ updateExpertClassification = function() {
                                      !uniqueNames$Rank %in% c('kingdom', 'phylum', 'subphylum', 'class', 'subclass',
                                                               'infraorder', 'order', 'suborder', 'stateofmatter'), ]
   
-  classify = data.frame(uniqueNewNames, Order = NA, Family = NA)
+  classify = data.frame(newNamesToClassify, Order = NA, Family = NA)
   
   problemNames = c()
   i = 1
-  for (n in uniqueNewNames$TaxonName) {
+  for (n in newNamesToClassify$TaxonName) {
     
-    print(paste("Checking", i, "of", nrow(uniqueNewNames), "names"))
+    print(paste("Checking", i, "of", nrow(newNamesToClassify), "names"))
     info = classification(n, db = 'ncbi')[[1]]
     
     if (is.data.frame(info)) { # if the name returns a result from NCBI

@@ -1,35 +1,75 @@
-# 
-library(dplyr)
-library(stringr)
-library(taxize)
+# Function for updating list of expertly identified taxa and their Family and Order
 
+updateExpertClassification = function() {
 
-files = list.files()
-expert = read.csv(files[grepl("ExpertIdentification.csv", files)], header = TRUE, stringsAsFactors = FALSE)
-
-uniqueNames = unique(expert[, c('Rank', 'TaxonName')])
-classify = data.frame(uniqueNames, Order = NA, Family = NA)
-
-problemNames = c()
-i = 1
-for (n in uniqueNames$TaxonName) {
+  require(dplyr)
+  require(stringr)
+  require(taxize)
   
-  print(paste("Checking", i, "of", nrow(uniqueNames), "names"))
-  info = classification(n, db = 'itis')[[1]]
+  expert = read.csv(list.files()[grepl("ExpertIdentification.csv", list.files())], header = TRUE, stringsAsFactors = FALSE)
   
-  if (!is.na(info)) {
-    classify$Order[classify$TaxonName == n] = ifelse('order' %in% info$rank, info$name[info$rank == 'order'], NA)
-    classify$Family[classify$TaxonName == n] = ifelse('family' %in% info$rank, info$name[info$rank == 'family'], NA)
-  } else {
-    classify$Order[classify$TaxonName == n] = NA
-    classify$Family[classify$TaxonName == n] = NA
-    problemNames = c(problemNames, n)
+  ranksOfInterest = c('species', 'complex', 'subgenus', 'genus', 'subtribe', 'tribe', 'family')
+  
+  uniqueNames = unique(expert[expert$Rank %in% ranksOfInterest, c('Rank', 'TaxonName')])
+
+  classifiedNames = read.csv('classified_expert_identifications.csv', header = T)
+  
+  # Get list of names that has not already been classified previously
+  newNamesToClassify = uniqueNames[!uniqueNames$TaxonName %in% classifiedNames$TaxonName & 
+                                     !uniqueNames$Rank %in% c('kingdom', 'phylum', 'subphylum', 'class', 'subclass',
+                                                              'infraorder', 'order', 'suborder', 'stateofmatter'), ]
+  
+  classify = data.frame(uniqueNewNames, Order = NA, Family = NA)
+  
+  problemNames = c()
+  i = 1
+  for (n in uniqueNewNames$TaxonName) {
     
-  }
-  i = i + 1
+    print(paste("Checking", i, "of", nrow(uniqueNewNames), "names"))
+    info = classification(n, db = 'ncbi')[[1]]
+    
+    if (is.data.frame(info)) { # if the name returns a result from NCBI
+      
+      classify$Order[classify$TaxonName == n] = ifelse('order' %in% info$rank, info$name[info$rank == 'order'], NA)
+      classify$Family[classify$TaxonName == n] = ifelse('family' %in% info$rank, info$name[info$rank == 'family'], NA)
+
+    } else {  # if no NCBI match
+
+      info2 = classification(n, db = 'itis')[[1]]
+      
+      if (is.data.frame(info2)) { # if the name returns a result from ITIS 
+        
+        classify$Order[classify$TaxonName == n] = ifelse('order' %in% info2$rank, info2$name[info2$rank == 'order'], NA)
+        classify$Family[classify$TaxonName == n] = ifelse('family' %in% info2$rank, info2$name[info2$rank == 'family'], NA)
+
+      } else { # if no ITIS match
+        
+        info3 = classification(n, db = 'eol')[[1]]
+        
+        if (is.data.frame(info3)) { # if the name returns a result from EOL
+          
+          classify$Order[classify$TaxonName == n] = ifelse('order' %in% info3$rank, info3$name[info3$rank == 'order'], NA)
+          classify$Family[classify$TaxonName == n] = ifelse('family' %in% info3$rank, info3$name[info3$rank == 'family'], NA)
+          
+        } else { # if still no match after trying ITIS, NCBI, EOL, then assign NA's
+          
+          classify$Order[classify$TaxonName == n] = NA
+          classify$Family[classify$TaxonName == n] = NA
+          problemNames = c(problemNames, n)
+
+        }
+      }
+    } # end if no ITIS match
+
+    i = i + 1
+    
+  } # end for loop 
+  
+  updatedClassifiedNames = rbind(classifiedNames, classify)
+  write.csv(updatedClassifiedNames, 'classified_expert_identifications.csv', row.names = F)
+  
+  return(list(problemNames = problemNames))
+  # A large number of names are not matching with ITIs. Possibly use rinat package to query the name and get the info that way instead.
+  
 }
 
-
-write.csv(classify, 'classified_expert_identifications.csv', row.names = F)
-
-# A large number of names are not matching with ITIs. Possibly use rinat package to query the name and get the info that way instead.

@@ -8485,6 +8485,7 @@ ID,SiteFK,Circle,Orientation,Code,Species
 4944,229,2,C,GHD,N/A
 4945,229,2,D,GHE,N/A
 4946,229,2,E,GHF,N/A
+<<<<<<< HEAD:2021-03-12_Plant.csv
 4947,230,1,A,GHG,N/A
 4948,230,1,B,GHH,N/A
 4949,230,1,C,GHI,N/A
@@ -8595,3 +8596,5 @@ ID,SiteFK,Circle,Orientation,Code,Species
 5054,232,6,C,GLJ,"American sycamore"
 5055,232,6,D,GLK,"Black willow"
 5056,232,6,E,GLL,"Willow oak"
+=======
+>>>>>>> 4881c34f6fde79a22731bdc989d63782009245bf:2020-10-28_Plant.csv

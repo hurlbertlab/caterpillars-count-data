@@ -3351,6 +3351,7 @@ ID,Date,UTCTime,IP,Page,File,Filters
 3359,2020-10-23,15:31:35,10.1.49.1,dataDownload,"Dynamically Generated CSV","Site: 78, YearStart: 2015, YearEnd: 2015, Arthropod: All"
 3360,2020-10-23,18:10:05,10.1.49.1,mapsAndGraphs,"Dynamically Generated Map CSV","Comparison Metric: Number per Survey, Observation Method: All, Arthropod Group: Beetles, Minimum Length (mm): 0, Plant Species: All, Wet Leaves: true, Month Start: 6, Month End: 6, Year Start: 2019, YearEnd: 2019"
 3361,2020-10-25,20:20:25,10.1.49.1,identificationSkills,"Dichotomous Keys to Arthropod Orders.pdf",
+<<<<<<< HEAD:2021-03-12_Download.csv
 3362,2020-10-28,04:34:52,10.1.49.1,identificationSkills,ArthropodIDGuide.pdf,
 3363,2020-10-29,14:24:11,10.1.51.1,resources,GettingStarted.pdf,
 3364,2020-10-29,14:37:50,10.1.51.1,resources,TrainingParticipants.pdf,
@@ -3532,3 +3533,5 @@ ID,Date,UTCTime,IP,Page,File,Filters
 3540,2021-03-10,20:55:54,10.1.49.1,resources,VisualSurveyTestBranch.pdf,
 3541,2021-03-11,23:32:02,10.1.51.1,identificationSkills/index.html,,
 3542,2021-03-11,23:34:10,10.1.51.1,identificationSkills/index.html,,
+=======
+>>>>>>> 4881c34f6fde79a22731bdc989d63782009245bf:2020-10-28_Download.csv

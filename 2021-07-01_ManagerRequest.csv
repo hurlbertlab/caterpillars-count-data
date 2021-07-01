@@ -27,7 +27,11 @@ ID,UserFKOfManager,SiteFK,HasCompleteAuthority,Status
 97,2207,51,1,Approved
 98,26,77,0,Approved
 99,920,89,0,Approved
+<<<<<<< HEAD:2021-07-01_ManagerRequest.csv
 102,2608,199,1,Pending
+=======
+102,2608,199,0,Pending
+>>>>>>> e5d2b65d75075fe875787a78755e54ac9e69a084:2021-06-22_ManagerRequest.csv
 103,2622,199,1,Approved
 107,2637,216,0,Approved
 109,2668,213,0,Approved
@@ -46,4 +50,7 @@ ID,UserFKOfManager,SiteFK,HasCompleteAuthority,Status
 122,2894,273,0,Approved
 123,2669,273,0,Approved
 124,2848,213,0,Pending
+<<<<<<< HEAD:2021-07-01_ManagerRequest.csv
 125,2899,199,0,Approved
+=======
+>>>>>>> e5d2b65d75075fe875787a78755e54ac9e69a084:2021-06-22_ManagerRequest.csv

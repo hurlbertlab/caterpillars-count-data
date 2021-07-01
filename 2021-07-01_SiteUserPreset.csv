@@ -1465,13 +1465,20 @@ ID,SiteFK,UserFK,ObservationMethod
 1564,162,2843,Visual
 1565,162,2844,Visual
 1566,255,2790,Visual
+<<<<<<< HEAD:2021-07-01_SiteUserPreset.csv
 1567,78,2809,"Beat sheet"
+=======
+1567,78,2809,Visual
+>>>>>>> e5d2b65d75075fe875787a78755e54ac9e69a084:2021-06-22_SiteUserPreset.csv
 1605,269,2849,Visual
 1569,192,2763,Visual
 1570,192,2850,Visual
 1571,235,2783,"Beat sheet"
 1573,196,2850,Visual
+<<<<<<< HEAD:2021-07-01_SiteUserPreset.csv
 1619,199,2899,"Beat sheet"
+=======
+>>>>>>> e5d2b65d75075fe875787a78755e54ac9e69a084:2021-06-22_SiteUserPreset.csv
 1574,60,2809,"Beat sheet"
 1575,258,2783,"Beat sheet"
 1576,257,2828,"Beat sheet"
@@ -1499,13 +1506,17 @@ ID,SiteFK,UserFK,ObservationMethod
 1599,56,2881,Visual
 1600,56,2878,Visual
 1601,239,2181,"Beat sheet"
+<<<<<<< HEAD:2021-07-01_SiteUserPreset.csv
 1612,231,2849,Visual
+=======
+>>>>>>> e5d2b65d75075fe875787a78755e54ac9e69a084:2021-06-22_SiteUserPreset.csv
 1602,196,2885,Visual
 1603,245,2886,"Beat sheet"
 1604,231,2877,Visual
 1606,267,2892,Visual
 1607,269,2877,Visual
 1608,267,2838,Visual
+<<<<<<< HEAD:2021-07-01_SiteUserPreset.csv
 1616,257,2836,"Beat sheet"
 1609,267,2872,Visual
 1620,226,2890,Visual
@@ -1517,3 +1528,8 @@ ID,SiteFK,UserFK,ObservationMethod
 1617,89,2651,Visual
 1618,226,2898,Visual
 1621,92,825,Visual
+=======
+1609,267,2872,Visual
+1610,272,2887,Visual
+1611,268,2877,Visual
+>>>>>>> e5d2b65d75075fe875787a78755e54ac9e69a084:2021-06-22_SiteUserPreset.csv

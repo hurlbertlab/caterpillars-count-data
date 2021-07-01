@@ -4130,6 +4130,7 @@ ID,Date,UTCTime,IP,Page,File,Filters
 4138,2021-06-18,19:29:29,10.95.123.1,dataDownload,"Dynamically Generated CSV","Site: All, YearStart: 2002, YearEnd: 2021, Arthropod: caterpillar"
 4139,2021-06-18,19:31:46,10.95.125.1,resources,"Building A Beat Sheet.pdf",
 4140,2021-06-21,20:02:26,10.95.125.1,dataDownload,"Dynamically Generated CSV","Site: 182, YearStart: 2018, YearEnd: 2019, Arthropod: All"
+<<<<<<< HEAD:2021-07-01_Download.csv
 4141,2021-06-22,21:51:58,10.95.118.65,resources,GettingStarted.pdf,
 4142,2021-06-23,01:51:42,10.95.123.1,conductASurvey,paperDataSheet.pdf,
 4143,2021-06-23,02:35:23,10.95.123.1,resources,"Building A Beat Sheet.pdf",
@@ -4162,3 +4163,5 @@ ID,Date,UTCTime,IP,Page,File,Filters
 4170,2021-06-30,22:57:25,10.95.118.65,identificationSkills/index.html,,
 4171,2021-06-30,23:19:38,10.95.118.65,identificationSkills/index.html,,
 4172,2021-06-30,23:36:36,10.95.118.65,identificationSkills,ArthropodIDGuide.pdf,
+=======
+>>>>>>> e5d2b65d75075fe875787a78755e54ac9e69a084:2021-06-22_Download.csv

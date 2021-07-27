@@ -7,7 +7,7 @@ library(xml2)
 library(tidyverse)
 library(lubridate)
 
-updateCatCountData <- function() {
+updateCatCountData <- function(updateExpertNames = FALSE) {
   
   # Remove old data files
   
@@ -39,6 +39,16 @@ updateCatCountData <- function() {
   
   for(f in filenames) {
     download.file(paste0(webpage_url, f), f) 
+  }
+  
+  if (updateExpertNames) {
+    
+    source('expert_id_taxon_names.r')
+    
+    probNames = updateExpertClassification()
+    
+    return(probNames)
+    
   }
   
 }

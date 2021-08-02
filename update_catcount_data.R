@@ -12,7 +12,8 @@ updateCatCountData <- function(updateExpertNames = FALSE) {
   # Remove old data files
   
   oldfiles <- data.frame(filename = list.files()) %>%
-    filter(grepl(".csv", filename))
+    filter(grepl(".csv", filename), 
+           !filename %in% c("arthropod_length_weight_regressions.csv", "classified_expert_identifications.csv"))
   
   unlink(oldfiles$filename)
   

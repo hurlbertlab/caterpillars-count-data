@@ -16,7 +16,7 @@ As of 2022, the intended workflow for integrating newly submitted data is as fol
 -- If there is a clear error in either the _number or length of leaves_, but no obvious solution, then change the `status` for every record pertaining to this Survey ID to "bad leaves".  
 -- If there is a clear error in the _arthropod quantity_ for a **single arthropod group** but no obvious solution, then change the `status` to "bad quantity".  
 -- If there is a clear error in the _arthropod length_ for a **single arthropod group** but no obvious solution, then change the `status` to "bad length".  
--- If there is a clear error that pertains to the **entire survey*, e.g. the _total abundance or diversity of arthropods_, then change the `status` for every record pertaining to this Survey ID to "remove".  
+-- If there is a clear error that pertains to the **entire survey**, e.g. the _total abundance or diversity of arthropods_, then change the `status` for every record pertaining to this Survey ID to "remove".  
 -- Finally, if upon examination, it is decided that these flagged values are still plausible and can be included in an analysis, change the `status` to "ok" and in the `actionTaken` column put "none".  
 -- This cleaning step is done when there are no longer any records with a `status` of "check".  
 * **Add new records to cleaned data file**  

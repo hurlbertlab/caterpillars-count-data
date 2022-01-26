@@ -61,7 +61,7 @@ qaqc = function(dataToCheck,               # subset of fullDataset dataframe (i.
                 write = TRUE
 ) {
   
-  survQAQC = dataToCheck %>%
+  arthQAQC = dataToCheck %>%
     mutate(arthFlag = case_when(
       Group == 'ant' & Length > 15 | Group == 'ant' & Quantity > 50 ~ 'ant',
       Group == 'aphid' & Length > 10 | Group == 'aphid' & Quantity > 50 ~ 'aphid',
@@ -78,27 +78,32 @@ qaqc = function(dataToCheck,               # subset of fullDataset dataframe (i.
       Group == 'truebugs' & Length > 25 | Group == 'truebugs' & Quantity > 6 ~ 'truebugs',
       Group == 'unidentified' & Length > 25 | Group == 'unidentified' & Quantity > 6 ~ 'unidentified',
       TRUE ~ ''
-    )) %>%
+    ))
+    
+  survQAQC = dataToCheck %>%
     group_by(ID, NumberOfLeaves, AverageLeafLength) %>%
-    summarize(arthFlags = trimws(paste(arthFlag, collapse = " ")),
-              totalArthAbund = sum(Quantity[!Group %in% c('ant', 'aphid')], na.rm = TRUE),
+    summarize(totalArthAbund = sum(Quantity[!Group %in% c('ant', 'aphid')], na.rm = TRUE),
               totalArthDiv = n_distinct(Group[!is.na(Group)]),
               rareArthDiv = n_distinct(Group[Group %in% c('truebugs', 'grasshopper', 'daddylonglegs', 'bee', 'moths')])) %>%
-    mutate(survFlag1 = ifelse(totalArthAbund > totalArthsMax, paste(arthFlags, 'totalArthAbund'), arthFlags),
+    ungroup() %>%
+    mutate(survFlag1 = ifelse(totalArthAbund > totalArthsMax, 'totalArthAbund', ''),
            survFlag2 = ifelse(totalArthDiv > arthDiversityMax, paste(survFlag1, 'totalArthDiv'), survFlag1),
            survFlag3 = ifelse(NumberOfLeaves > numberLeavesMax | NumberOfLeaves < numberLeavesMin, paste(survFlag2, 'numLeaves'), survFlag2),
            survFlag4 = ifelse(AverageLeafLength > leafLengthMax, paste(survFlag3, 'leafLength'), survFlag3),
-           flags = trimws(survFlag4),
-           status = ifelse(flags == '', 'ok', 'check')) %>%
-    ungroup() %>%
-    dplyr::select(ID, flags, status) %>%
-    right_join(dataToCheck, by = 'ID') %>%
-    dplyr::select(ID, UserFKOfObserver:cell, flags, status) %>%
-    mutate(actionTaken = NA)
+           survFlags = trimws(survFlag4)) %>%
+    dplyr::select(ID, survFlags) 
   
+  finalQAQC = arthQAQC %>%
+    left_join(survQAQC, by = 'ID') %>%
+    mutate(flags = trimws(paste(arthFlag, survFlags)),
+           status = ifelse(flags == '', 'ok', 'check'),
+           actionTaken = NA) %>%
+    dplyr::select(ID:cell, flags, status, actionTaken)
+    
+
   # Optionally write the qa/qc'ed dataset to a file
   if (write) {
-    write.csv(survQAQC, paste0('dataCleaning/flagged_dataset_', Sys.Date(), '.csv'), row.names = F)
+    write.csv(finalQAQC, paste0('dataCleaning/flagged_dataset_', Sys.Date(), '.csv'), row.names = F)
   }
   return(survQAQC)
 }

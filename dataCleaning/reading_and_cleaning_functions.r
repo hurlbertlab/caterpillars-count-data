@@ -58,7 +58,7 @@ qaqc = function(dataToCheck,               # subset of fullDataset dataframe (i.
                 numberLeavesMin = 5,       # flag surveys where number of leaves is less than this value
                 numberLeavesMax = 400,     # flag surveys where number of leaves falls exceeds this value
                 leafLengthMax = 30,        # flag surveys where leaf length exceeds this value
-                write = TRUE
+                write = FALSE
 ) {
   
   arthQAQC = dataToCheck %>%
@@ -126,5 +126,5 @@ qaqc = function(dataToCheck,               # subset of fullDataset dataframe (i.
   if (write) {
     write.csv(finalQAQC, paste0('dataCleaning/flagged_dataset_', Sys.Date(), '.csv'), row.names = F)
   }
-  return(survQAQC)
+  return(finalQAQC)
 }

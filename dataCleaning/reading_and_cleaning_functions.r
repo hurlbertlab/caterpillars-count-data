@@ -98,6 +98,12 @@ qaqc = function(dataToCheck,               # subset of fullDataset dataframe (i.
         TRUE ~ ''
       )
     )
+  
+  # Survey-level flag if any of the component arthropods has a high number flag
+  arthNumFlag = arthQAQC %>%
+    group_by(ID) %>%
+    summarize(numFlag = paste(arthFlagNum, collapse = " "))
+    
     
   survQAQC = dataToCheck %>%
     group_by(ID, NumberOfLeaves, AverageLeafLength) %>%
@@ -105,18 +111,17 @@ qaqc = function(dataToCheck,               # subset of fullDataset dataframe (i.
               totalArthDiv = n_distinct(Group[!is.na(Group)]),
               rareArthDiv = n_distinct(Group[Group %in% c('truebugs', 'grasshopper', 'daddylonglegs', 'bee', 'moths')])) %>%
     ungroup() %>%
-    mutate(survFlag1 = ifelse(totalArthAbund > totalArthsMax, 'totalArthAbund', ''),
+    left_join(arthNumFlag, by = 'ID') %>%
+    mutate(survFlag1 = ifelse(totalArthAbund > totalArthsMax & numFlag == '', 'totalArthAbund', ''),
            survFlag2 = ifelse(totalArthDiv > arthDiversityMax, paste(survFlag1, 'totalArthDiv'), survFlag1),
            survFlag3 = ifelse(NumberOfLeaves > numberLeavesMax | NumberOfLeaves < numberLeavesMin, paste(survFlag2, 'numLeaves'), survFlag2),
            survFlag4 = ifelse(AverageLeafLength > leafLengthMax, paste(survFlag3, 'leafLength'), survFlag3),
-           survFlag5 = trimws(survFlag4)) %>%
-    dplyr::select(ID, survFlag5) 
+           survFlags = trimws(survFlag4)) %>%
+    dplyr::select(ID, survFlags) 
   
   finalQAQC = arthQAQC %>%
     left_join(survQAQC, by = 'ID') %>%
-    # if there is an arthropod flag for abundance, then no need to report the totalArthAbund flag
-    mutate(survFlags = ifelse(arthFlagNum != "", trimws(gsub('totalArthAbund', '', survFlag5)), survFlag5),
-           flags = trimws(paste(arthFlagNum, arthFlagLength, survFlags)),
+    mutate(flags = trimws(paste(arthFlagNum, arthFlagLength, survFlags)),
            status = ifelse(flags == '', 'ok', 'check'),
            actionTaken = NA) %>%
     dplyr::select(ID:cell, flags, status, actionTaken)

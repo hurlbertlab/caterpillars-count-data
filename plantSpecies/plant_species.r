@@ -3,9 +3,13 @@
 
 library(dplyr)
 library(taxize)
+library(stringr)
 
 sites = read.csv(list.files()[grep('Site.csv', list.files())], header = TRUE, stringsAsFactors = FALSE)
 plants = read.csv(list.files()[grep('Plant.csv', list.files())], header = TRUE, stringsAsFactors = FALSE)
+
+coniferList = unique(plants[, c('Species', 'IsConifer')])
+
 plantspp = data.frame(plantName = unique(plants$Species)) %>%
   mutate(plantName = as.character(plantName),
          cleanedPlantName = case_when(
@@ -48,8 +52,18 @@ plantspp = data.frame(plantName = unique(plants$Species)) %>%
          cleanedPlantName = str_replace(cleanedPlantName, " sp$", ""),
          cleanedPlantName = str_replace(cleanedPlantName, " sp.$", ""),
          cleanedPlantName = str_replace(cleanedPlantName, " species$", ""),
-         cleanedPlantName = str_replace(cleanedPlantName, "?", "")
-         ) 
+         cleanedPlantName = str_replace(cleanedPlantName, "\\?", "")
+         ) %>%
+  left_join(coniferList, by = c('plantName' = 'Species'))
+
+
+coll; plantList
+
+coll2 = coll %>%
+  filter(!cleanedPlantName %in% plantList$cleanedPlantName)
+
+
+
 
 
 # Finding matching taxonomic entity in ITIS

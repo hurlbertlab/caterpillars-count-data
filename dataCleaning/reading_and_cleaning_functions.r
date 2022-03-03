@@ -71,7 +71,7 @@ qaqc = function(dataToCheck,               # subset of fullDataset dataframe (i.
       Group == 'caterpillar' & Length > 50 ~ 'caterpillarLength',
       Group == 'daddylonglegs' & Length > 15 ~ 'daddylonglegsLength',
       Group == 'fly' & Length > 20 ~ 'flyLength',
-      Group == 'grasshopper' & Length > 20 ~ 'grasshopperLength',
+      Group == 'grasshopper' & Length > 30 ~ 'grasshopperLength',
       Group == 'leafhopper' & Length > 20 ~ 'leafhopperLength',
       Group == 'moths' & Length > 30 ~ 'mothLength',
       Group == 'other' & Length > 25 ~ 'otherLength',

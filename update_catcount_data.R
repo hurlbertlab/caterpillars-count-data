@@ -39,7 +39,7 @@ updateCatCountData <- function(updateExpertNames = FALSE) {
   filenames = paste0(recent_date, "_", base_filenames, ".csv")
   
   for(f in filenames) {
-    download.file(paste0(webpage_url, f), f) 
+    download.file(paste0(webpage_url, f), f, timeout = 120) 
   }
   
   if (updateExpertNames) {

@@ -814,8 +814,6 @@ species,Dolichoderus plagiatus,Hymenoptera,Formicidae
 family,Eulophidae,Hymenoptera,Eulophidae
 tribe,Erythroneurini,Hemiptera,Cicadellidae
 complex,Enchenopa binotata,Hemiptera,Membracidae
-species,Otiocerus coquebertii,NA,NA
-tribe,Smiliini,NA,NA
 species,Nylanderia flavipes,Hymenoptera,Formicidae
 species,Salticus scenicus,Araneae,Salticidae
 tribe,Chrysopini,Neuroptera,Chrysopidae
@@ -832,7 +830,6 @@ species,Melanoplus viridipes,Orthoptera,Acrididae
 family,Pterophoridae,Lepidoptera,Pterophoridae
 species,Actias luna,Lepidoptera,Saturniidae
 family,Tephritidae,Diptera,Tephritidae
-species,Caliroa liturata,NA,NA
 species,Camponotus americanus,Hymenoptera,Formicidae
 genus,Scaptomyza,Diptera,Drosophilidae
 species,Otiocerus amyotii,Hemiptera,Derbidae
@@ -841,16 +838,11 @@ species,Cecrita biundata,Lepidoptera,Notodontidae
 genus,Ellychnia,Coleoptera,Lampyridae
 species,Lochmaeus bilineata,Lepidoptera,Notodontidae
 genus,Ceratocapsus,Hemiptera,Miridae
-species,Cecrita guttivitta,NA,NA
-species,Nematus latitarsus,NA,NA
 species,Eupeodes pomus,Diptera,Syrphidae
-species,Coelodasys unicornis,NA,NA
-species,Ischnomera ruficollis,NA,NA
 genus,Neolygus,Hemiptera,Miridae
 genus,Lucidota,Coleoptera,Lampyridae
 genus,Elonus,Coleoptera,Aderidae
 genus,Plagiognathus,Hemiptera,Miridae
-species,Norape cretata,NA,NA
 complex,Acronicta increta,Lepidoptera,Noctuidae
 species,Hyaliodes vitripennis,Hemiptera,Miridae
 genus,Chionodes,Lepidoptera,Gelechiidae
@@ -859,7 +851,6 @@ species,Paramordellaria triloba,Coleoptera,Mordellidae
 species,Glipa oculata,Coleoptera,Mordellidae
 species,Philonix fulvicollis,Hymenoptera,Cynipidae
 family,Mantidae,Mantodea,Mantidae
-species,Oedemasia leptinoides,NA,NA
 genus,Pyropyga,Coleoptera,Lampyridae
 species,Mordella marginata,Coleoptera,Mordellidae
 species,Cryptolaemus montrouzieri,Coleoptera,Coccinellidae
@@ -916,18 +907,14 @@ family,Tenthredinidae,Hymenoptera,Tenthredinidae
 species,Idolus bigeminatus,Coleoptera,Elateridae
 tribe,Mordellistenini,Coleoptera,Mordellidae
 genus,Neurocolpus,Hemiptera,Miridae
-tribe,Nematini,NA,NA
 species,Papilio glaucus,Lepidoptera,Papilionidae
-subgenus,Lineomyzocallis,NA,NA
 tribe,Ceratocapsini,Hemiptera,Miridae
 species,Orthosia alurina,Lepidoptera,Noctuidae
 species,Nematocampa resistaria,Lepidoptera,Geometridae
 species,Brachys aerosus,Coleoptera,Buprestidae
 species,Podabrus brevicollis,Coleoptera,Cantharidae
 genus,Haplaxius,Hemiptera,Cixiidae
-tribe,Pendarini,NA,NA
 species,Pseudomyrmex ejectus,Hymenoptera,Formicidae
-species,Strongylium crenatum,NA,NA
 species,Entylia carinata,Hemiptera,Membracidae
 genus,Dorytomus,Coleoptera,Erirhinidae
 species,Toxonotus cornutus,Coleoptera,Anthribidae
@@ -944,7 +931,6 @@ genus,Nephrotoma,Diptera,Tipulidae
 genus,Macrodiplosis,Diptera,Cecidomyiidae
 species,Otiorhynchus raucus,Coleoptera,Curculionidae
 genus,Calligrapha,Coleoptera,Chrysomelidae
-species,Paraeschra georgica,NA,NA
 family,Eurytomidae,Hymenoptera,Eurytomidae
 species,Corythucha associata,Hemiptera,Tingidae
 species,Eucallipterus tiliae,Hemiptera,Aphididae
@@ -986,7 +972,6 @@ species,Cycloneda munda,Coleoptera,Coccinellidae
 family,Cleridae,Coleoptera,Cleridae
 genus,Meconema,Orthoptera,Tettigoniidae
 species,Araneus guttulatus,Araneae,Araneidae
-species,Phyllocnistis vitifoliella,NA,NA
 species,Scirtes tibialis,Coleoptera,Scirtidae
 genus,Urgleptes,Coleoptera,Cerambycidae
 genus,Gargaphia,Hemiptera,Tingidae
@@ -1005,7 +990,6 @@ genus,Acrobasis,Lepidoptera,Pyralidae
 subtribe,Sphingina,Lepidoptera,Sphingidae
 species,Phobetron pithecium,Lepidoptera,Limacodidae
 genus,Chrysops,Diptera,Tabanidae
-species,Anthrax argyropygus,NA,NA
 species,Argyresthia oreasella,Lepidoptera,Argyresthiidae
 species,Anageshna primordialis,Lepidoptera,Crambidae
 genus,Hypagyrtis,Lepidoptera,Geometridae
@@ -1014,13 +998,11 @@ subtribe,Cryptocephalina,Coleoptera,Chrysomelidae
 family,Pompilidae,Hymenoptera,Pompilidae
 tribe,Catocalini,Lepidoptera,Erebidae
 family,Limoniidae,Diptera,Limoniidae
-tribe,Heterocampini,NA,NA
 genus,Monarthrum,Coleoptera,Curculionidae
 genus,Lestes,Odonata,Lestidae
 species,Monomorium minimum,Hymenoptera,Formicidae
 complex,Monomorium minimum,Hymenoptera,Formicidae
 species,Leucochrysa pavida,Neuroptera,Chrysopidae
-species,Tytthonyx erythrocephala,NA,NA
 species,Tenodera sinensis,Mantodea,Mantidae
 family,Crambidae,Lepidoptera,Crambidae
 family,Hahniidae,Araneae,Hahniidae
@@ -1036,38 +1018,56 @@ family,Gryllidae,Orthoptera,Gryllidae
 species,Paonias excaecata,Lepidoptera,Sphingidae
 genus,Phyllobaenus,Coleoptera,Cleridae
 genus,Pityohyphantes,Araneae,Linyphiidae
-species,Bothriocera cognita,NA,NA
 genus,Spilosoma,Lepidoptera,Erebidae
 genus,Cycloneda,Coleoptera,Coccinellidae
 species,Satyrium calanus,Lepidoptera,Lycaenidae
 tribe,Lepturini,Coleoptera,Cerambycidae
 family,Phoridae,Diptera,Phoridae
 species,Thelia bimaculata,Hemiptera,Membracidae
-species,Syzeton subfasciatus,NA,NA
 family,Ceratopogonidae,Diptera,Ceratopogonidae
 species,Araneus cingulatus,Araneae,Araneidae
 genus,Antheraea,Lepidoptera,Saturniidae
 complex,Photinus marginellus,Coleoptera,Lampyridae
-species,Amphibolips quercusostensackenii,NA,NA
 genus,Jikradia,Hemiptera,Cicadellidae
-species,Sibovia occatoria,NA,NA
 species,Nerice bidentata,Lepidoptera,Notodontidae
 species,Cheiracanthium mildei,Araneae,Cheiracanthiidae
 species,Brachiacantha ursina,Coleoptera,Coccinellidae
 genus,Belyta,Hymenoptera,Diapriidae
 genus,Sympetrum,Odonata,Libellulidae
-species,Caryomyia urnula,NA,NA
 genus,Coptera,Hymenoptera,Diapriidae
 species,Coptotriche badiiella,Lepidoptera,Tischeriidae
 genus,Phyllonorycter,Lepidoptera,Gracillariidae
 tribe,Crematogastrini,Hymenoptera,Formicidae
 species,Apoda biguttata,Lepidoptera,Limacodidae
-species,Ossiannilssonola australis,NA,NA
 species,Stictocephala bisonia,Hemiptera,Membracidae
 genus,Aphrophora,Hemiptera,Aphrophoridae
-tribe,Telamonini,NA,NA
 genus,Polypsocus,Psocoptera,Amphipsocidae
 species,Parasteatoda tepidariorum,Araneae,Theridiidae
 species,Neoscona arabesca,Araneae,Araneidae
 genus,Chaoborus,Diptera,Chaoboridae
 family,Clubionidae,Araneae,Clubionidae
+species,Caliroa liturata,Hymenoptera,Tenthredinidae
+species,Cecrita guttivitta,Lepidoptera,Notodontidae
+species,Nematus latitarsus,Hymenoptera,Tenthredinidae
+species,Coelodasys unicornis,Lepidoptera,Notodontidae
+species,Ischnomera ruficollis,Coleoptera,Oedemeridae
+species,Norape cretata,Lepidoptera,Megalopygidae
+species,Oedemasia leptinoides,Lepidoptera,Notodontidae
+species,Otiocerus coquebertii,Hemiptera,Derbidae
+tribe,Smiliini,Hemiptera,Membracidae
+tribe,Nematini,Hymenoptera,Tenthredinidae
+subgenus,Lineomyzocallis,Hemiptera,Aphididae
+tribe,Pendarini,Hemiptera,Cicadellidae
+species,Strongylium crenatum,Coleoptera,Tenebrionidae
+species,Paraeschra georgica,Lepidoptera,Notodontidae
+species,Phyllocnistis vitifoliella,Lepidoptera,Gracillariidae
+species,Anthrax argyropygus,Diptera,Bombyliidae
+tribe,Heterocampini,Lepidoptera,Notodontidae
+species,Tytthonyx erythrocephala,Coleoptera,Cantharidae
+species,Bothriocera cognita,Hemiptera,Cixiidae
+species,Syzeton subfasciatus,Coleoptera,Aderidae
+species,Amphibolips quercusostensackenii,Hymenoptera,Cynipidae
+species,Sibovia occatoria,Hemiptera,Cicadellidae
+species,Caryomyia urnula,Diptera,Cecidomyiidae
+species,Ossiannilssonola australis,Hemiptera,Cicadellidae
+tribe,Telamonini,Hemiptera,Membracidae

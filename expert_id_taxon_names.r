@@ -60,11 +60,31 @@ updateExpertClassification = function() {
             Order = ifelse('order' %in% info$rank, info$name[info$rank == 'order'], NA)
             Family = ifelse('family' %in% info$rank, info$name[info$rank == 'family'], NA)
             
-          } else { # if still no match after trying ITIS, NCBI, EOL, then assign NA's
+          } else { 
             
-            Order = NA
-            Family = NA
-
+            info = classification(n, db = 'gbif')[[1]]
+            
+            if (is.data.frame(info)) { # if the name returns a result from GBIF
+              
+              Order = ifelse('order' %in% info$rank, info$name[info$rank == 'order'], NA)
+              Family = ifelse('family' %in% info$rank, info$name[info$rank == 'family'], NA)
+              
+            } else { 
+              
+              info = classification(n, db = 'wiki')[[1]]
+              
+              if (is.data.frame(info)) { # if the name returns a result from Wiki
+                
+                Order = ifelse('order' %in% info$rank, info$name[info$rank == 'order'], NA)
+                Family = ifelse('family' %in% info$rank, info$name[info$rank == 'family'], NA)
+                
+              } else { # if still no match after trying ITIS, NCBI, EOL, GBIF, and Wiki then assign NA's
+                
+                Order = NA
+                Family = NA
+                
+              }
+            }
           }
         }
       } # end if no ITIS match

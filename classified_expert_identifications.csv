@@ -981,8 +981,6 @@ species,Neortholomus scolopax,Hemiptera,Lygaeidae
 species,Anatis mali,Coleoptera,Coccinellidae
 species,Idaea dimidiata,Lepidoptera,Geometridae
 genus,Trioza,Hemiptera,Triozidae
-species,Monomorium minimum,Hymenoptera,Formicidae
-complex,Monomorium minimum,Hymenoptera,Formicidae
 species,Aphis spiraecola,Hemiptera,Aphididae
 family,Scirtidae,Coleoptera,Scirtidae
 species,Odontota dorsalis,Coleoptera,Chrysomelidae
@@ -1001,7 +999,6 @@ family,Limoniidae,Diptera,Limoniidae
 genus,Monarthrum,Coleoptera,Curculionidae
 genus,Lestes,Odonata,Lestidae
 species,Monomorium minimum,Hymenoptera,Formicidae
-complex,Monomorium minimum,Hymenoptera,Formicidae
 species,Leucochrysa pavida,Neuroptera,Chrysopidae
 species,Tenodera sinensis,Mantodea,Mantidae
 family,Crambidae,Lepidoptera,Crambidae

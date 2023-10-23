@@ -5,7 +5,9 @@
 #   from where it left off.
 
 # --names for which Family and Order are both NA should be looked into manually,
-#   e.g. via Global Names Resolver
+#   e.g. via Global Names Resolver 
+
+# --(don't use "United States Species List" or "iNaturalist" as taxon source, as taxon info above genus not returned)
 
 updateExpertClassification = function() {
 

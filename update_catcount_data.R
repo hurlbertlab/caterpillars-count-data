@@ -9,11 +9,13 @@ library(lubridate)
 
 updateCatCountData <- function(updateExpertNames = FALSE) {
   
-  # Remove old data files
+  # Remove old data files (be sure to add any .csv files that shouldn't be deleted here)
   
   oldfiles <- data.frame(filename = list.files()) %>%
     filter(grepl(".csv", filename), 
-           !filename %in% c("arthropod_length_weight_regressions.csv", "classified_expert_identifications.csv"))
+           !filename %in% c("arthropod_length_weight_regressions.csv", 
+                            "classified_expert_identifications.csv", 
+                            "taxon_ranks.csv"))
   
   unlink(oldfiles$filename)
   

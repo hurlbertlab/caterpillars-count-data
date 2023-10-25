@@ -8,6 +8,7 @@ expert = read.csv(list.files()[grepl("ExpertIdentification.csv", list.files())],
 arths = read.csv(list.files()[grepl("ArthropodSighting.csv", list.files())], header = TRUE, stringsAsFactors = FALSE)
 survey = read.csv(list.files()[grepl("Survey.csv", list.files())], header = TRUE, stringsAsFactors = FALSE)
 plant = read.csv(list.files()[grepl("Plant.csv", list.files())], header = TRUE, stringsAsFactors = FALSE)
+sites = read.csv(list.files()[grepl("Site.csv", list.files())], header = TRUE, stringsAsFactors = FALSE)
 
 expert_higher_tax = read.csv("classified_expert_identifications.csv", header = T, quote = '\"')
 
@@ -45,6 +46,27 @@ mostWidespreadByGroup = topSpeciesByNumSites %>%
   group_by(StandardGroup) %>%
   slice_head(n = 1)
 
+topSitesByNumPhotos = exp %>%
+  left_join(arths[, c("ID", "SurveyFK")], by = c("ArthropodSightingFK" = "ID")) %>%
+  left_join(survey[, c("ID", "PlantFK")], by = c("SurveyFK" = "ID")) %>%
+  left_join(plant[, c("ID", "SiteFK")], by = c("PlantFK" = "ID")) %>%
+  left_join(sites[, c("ID", "Name")], by = c("SiteFK" = "ID")) %>%
+  count(Name) %>%
+  arrange(desc(n))
+
+topSitesByNumSpecies = exp %>%
+  left_join(arths[, c("ID", "SurveyFK")], by = c("ArthropodSightingFK" = "ID")) %>%
+  left_join(survey[, c("ID", "PlantFK")], by = c("SurveyFK" = "ID")) %>%
+  left_join(plant[, c("ID", "SiteFK")], by = c("PlantFK" = "ID")) %>%
+  left_join(sites[, c("ID", "Name")], by = c("SiteFK" = "ID")) %>%
+  filter(Rank == "species") %>%
+  group_by(Name) %>%
+  summarize(nSpecies = length(unique(TaxonName))) %>%
+  arrange(desc(nSpecies)) %>%
+  left_join(topSitesByNumPhotos)
+
+
+  
 
 ## Breakdown by arthropod groups
 
@@ -52,13 +74,15 @@ groupCount = exp %>%
   mutate(NewGroup = ifelse(StandardGroup %in% focalArthGroups, StandardGroup, "other"),
          NewGroup = ifelse(StandardGroup == "bee", "bee/wasp", NewGroup)) %>%
   group_by(NewGroup) %>%
-  summarize(n = n(),
+  summarize(numPhotos = n(),
             numSpecies = length(unique(TaxonName[Rank == "species"]))) %>%
-  arrange(desc(n))
+  mutate(pctPhotos = round(100*numPhotos/sum(numPhotos), 2),
+         pctSpecies = round(100*numSpecies/sum(numSpecies), 2)) %>%
+  arrange(desc(numPhotos))
 
 
 par(mfrow = c(1,1), mar = c(2, 5, 2, 5))
-pie(groupCount$n, labels = groupCount$NewGroup, col = rainbow(nrow(groupCount)))
+pie(groupCount$numPhotos, labels = groupCount$NewGroup, col = rainbow(nrow(groupCount)))
 
 #pie(groupCount$numSpecies, labels = groupCount$NewGroup, col = rainbow(nrow(groupCount)))
 

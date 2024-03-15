@@ -13,10 +13,10 @@ As of 2022, the intended workflow for integrating newly submitted data is as fol
 -- This will grab the most recent table versions from https://caterpillarscount.unc.edu/backups and replace the older versions.  
 
 * **Plant taxonomy and status**
---In the `plantSpecies` folder we keep files including our `officialPlantList` which translates all user-inputted plant species names into standardized (using ITIS) taxonomic concepts (see `cleaning_plant_names.r`).
---We also have a workflow for inferring plant species when the Site Manager never specified it based on user-inputted names and/or arthropod photos that reveal the nature of the plant species (see `IDforPlantsThatAreNotIdentified.r` which generates an `inferredPlantNames` file).
---Finally, we have a workflow for assigning native/alien status to plant species based on the USDA PLANTS Database (see `plant_origin_status.r`).
---Any use of Caterpillars Count! data that evaluates tree species differences should be sure they have dealt with these complexities.
+--In the `plantSpecies` folder we keep files including our `officialPlantList` which translates all user-inputted plant species names into standardized (using ITIS) taxonomic concepts (see `cleaning_plant_names.r`).  
+--We also have a workflow for inferring plant species when the Site Manager never specified it based on user-inputted names and/or arthropod photos that reveal the nature of the plant species (see `IDforPlantsThatAreNotIdentified.r` which generates an `inferredPlantNames` file).  
+--Finally, we have a workflow for assigning native/alien status to plant species based on the USDA PLANTS Database (see `plant_origin_status.r`).  
+--Any use of Caterpillars Count! data that evaluates tree species differences should be sure they have dealt with these complexities.  
 
 
 * **Prepare any newly submitted data since the last update for cleaning**  

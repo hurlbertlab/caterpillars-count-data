@@ -258,7 +258,7 @@ Wafer ash,Wafer ash,Ptelea trifoliata,Ptelea,28992,species,,0
 Buffalo nut,Buffalo nut,Pyrularia pubera,Pyrularia,504705,species,,0
 Pear,Pear,Pyrus,Pyrus,25294,genus,,0
 Callery pear,Callery pear,Pyrus calleryana,Pyrus,504706,species,,0
-Pyrus pyrifolia,Pyrus pyrifolia,Pyrus pyrifolia,Pyrus pyrifolia,25296,species,,0
+Pyrus pyrifolia,Pyrus pyrifolia,Pyrus pyrifolia,Pyrus,25296,species,,0
 Oak,Oak,Quercus,Quercus,19276,genus,,0
 California live oak,California live oak,Quercus agrifolia,Quercus,19289,species,,0
 White oak,White oak,Quercus alba,Quercus,19290,species,,0
@@ -605,7 +605,7 @@ Chinkapin oak,Chinkapin oak,Quercus muehlenbergii,Quercus,504714,species,NA,0
 Box elder,Box elder,Acer negundo,Acer,28749,species,NA,0
 Clethra alnifolia,Clethra alnifolia,Clethra alnifolia,Clethra,23454,species,NA,0
 Mountain-ash spp.,Mountain-ash,Sorbus,Sorbus,25318,genus,NA,0
-Gambel oak,Gambel's oak,Quercus gambelii,Quercus gambelii,19337,genus,NA,0
+Gambel oak,Gambel's oak,Quercus gambelii,Quercus,19337,genus,NA,0
 Boxwood spp.,Buxus,Buxus,Buxus,28022,genus,NA,0
 L,NA,NA,NA,NA,NA,NA,0
 Sweetshrub spp.,Sweetshrub,Calycanthus,Calycanthus,18139,genus,NA,0

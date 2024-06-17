@@ -450,7 +450,7 @@ ID,SiteFK,UserFK,ObservationMethod
 453,78,37,"Beat sheet"
 454,78,85,"Beat sheet"
 455,78,833,"Beat sheet"
-456,78,26,"Beat sheet"
+456,78,26,Visual
 469,78,819,"Beat sheet"
 472,67,830,"Beat sheet"
 457,95,144,Visual
@@ -2082,7 +2082,11 @@ ID,SiteFK,UserFK,ObservationMethod
 2183,385,3776,Visual
 2184,255,3780,Visual
 2185,315,3742,"Beat sheet"
+<<<<<<<< HEAD:2024-06-17_SiteUserPreset.csv
 2292,78,4062,"Beat sheet"
+========
+2292,78,4062,Visual
+>>>>>>>> 3e97a840c5c65987a85de55d74c6670b6752a460:2024-05-23_SiteUserPreset.csv
 2186,344,3717,"Beat sheet"
 2311,408,4101,Visual
 2188,278,3814,"Beat sheet"
@@ -2159,13 +2163,17 @@ ID,SiteFK,UserFK,ObservationMethod
 2258,401,4006,Visual
 2259,410,4009,Visual
 2260,410,4061,Visual
+<<<<<<<< HEAD:2024-06-17_SiteUserPreset.csv
 2261,310,26,"Beat sheet"
+========
+2261,310,26,Visual
+>>>>>>>> 3e97a840c5c65987a85de55d74c6670b6752a460:2024-05-23_SiteUserPreset.csv
 2287,310,4035,"Beat sheet"
 2262,310,4062,"Beat sheet"
 2263,310,3661,Visual
 2264,310,4036,"Beat sheet"
 2266,197,3661,"Beat sheet"
-2265,197,26,"Beat sheet"
+2265,197,26,Visual
 2267,77,4062,"Beat sheet"
 2268,77,4036,"Beat sheet"
 2310,401,3996,Visual
@@ -2186,7 +2194,11 @@ ID,SiteFK,UserFK,ObservationMethod
 2282,197,4062,"Beat sheet"
 2284,399,3996,Visual
 2283,408,3996,Visual
+<<<<<<<< HEAD:2024-06-17_SiteUserPreset.csv
 2298,197,4035,Visual
+========
+2298,197,4035,"Beat sheet"
+>>>>>>>> 3e97a840c5c65987a85de55d74c6670b6752a460:2024-05-23_SiteUserPreset.csv
 2285,297,2828,"Beat sheet"
 2286,397,3996,Visual
 2307,403,3996,Visual
@@ -2196,7 +2208,10 @@ ID,SiteFK,UserFK,ObservationMethod
 2290,60,4035,"Beat sheet"
 2291,424,4084,Visual
 2293,78,4035,"Beat sheet"
+<<<<<<<< HEAD:2024-06-17_SiteUserPreset.csv
 2320,397,4101,Visual
+========
+>>>>>>>> 3e97a840c5c65987a85de55d74c6670b6752a460:2024-05-23_SiteUserPreset.csv
 2294,398,4089,Visual
 2295,400,4004,Visual
 2296,406,4054,Visual
@@ -2208,6 +2223,7 @@ ID,SiteFK,UserFK,ObservationMethod
 2303,396,4101,Visual
 2304,396,3996,Visual
 2306,403,4101,Visual
+<<<<<<<< HEAD:2024-06-17_SiteUserPreset.csv
 2353,431,4130,"Beat sheet"
 2308,401,4101,Visual
 2309,95,4103,Visual
@@ -2265,3 +2281,9 @@ ID,SiteFK,UserFK,ObservationMethod
 2367,361,4153,"Beat sheet"
 2368,329,4140,"Beat sheet"
 2369,273,4120,"Beat sheet"
+========
+2308,401,4101,Visual
+2309,95,4103,Visual
+2313,354,4077,"Beat sheet"
+2312,422,2669,"Beat sheet"
+>>>>>>>> 3e97a840c5c65987a85de55d74c6670b6752a460:2024-05-23_SiteUserPreset.csv

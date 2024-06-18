@@ -13010,7 +13010,6 @@ ID,SiteFK,Circle,Orientation,Code,Species,IsConifer
 9193,420,3,C,MOO,White oak,0
 9194,420,3,D,MOP,Red oak,0
 9195,420,3,E,MOQ,Sweetgum,0
-<<<<<<<< HEAD:2024-06-17_Plant.csv,,,,,,
 9666,270,5,A,NGT,Allegheny serviceberry,0
 9196,421,1,A,MOR,American beech,0
 9197,421,1,B,MOS,Sugar maple,0
@@ -13021,17 +13020,6 @@ ID,SiteFK,Circle,Orientation,Code,Species,IsConifer
 9477,421,2,B,MZM,Fir spp.,1
 9478,421,2,C,MZN,Ash spp.,0
 9479,421,2,D,MZO,Dogwood spp.,0
-========,,,,,,
-9196,421,1,A,MOR,N/A,0
-9197,421,1,B,MOS,N/A,0
-9198,421,1,C,MOT,N/A,0
-9199,421,1,D,MOU,N/A,0
-9200,421,1,E,MOV,N/A,0
-9476,421,2,A,MZL,N/A,0
-9477,421,2,B,MZM,N/A,0
-9478,421,2,C,MZN,N/A,0
-9479,421,2,D,MZO,N/A,0
->>>>>>>> 3e97a840c5c65987a85de55d74c6670b6752a460:2024-05-23_Plant.csv,,,,,,
 9480,421,2,E,MZP,N/A,0
 9481,421,3,A,MZQ,American basswood,0
 9482,421,3,B,MZR,Dogwood spp.,0
@@ -13090,7 +13078,6 @@ ID,SiteFK,Circle,Orientation,Code,Species,IsConifer
 9533,95,6,C,DUN,Swamp white oak,0
 9534,95,7,D,DUT,Mountain laurel,0
 9535,95,7,E,DUU,Hornbeam spp.,0
-<<<<<<<< HEAD:2024-06-17_Plant.csv,,,,,,
 9536,423,1,A,NBT,Eugenia foetida - spanish stopper,0
 9537,423,1,B,NBU,Coccoloba diversifolia - pigeon plum,0
 9538,423,1,C,NBV,Capparis cynophallophora - jamaican caper,0
@@ -13121,38 +13108,6 @@ ID,SiteFK,Circle,Orientation,Code,Species,IsConifer
 9563,423,6,C,NCU,Coccoloba diversifolia - pigeon plum,0
 9564,423,6,D,NCV,Coccoloba diversifolia - pigeon plum,0
 9565,423,6,E,NCW,Gymnanthes lucida - crabwood,0
-========,,,,,,
-9536,423,1,A,NBT,N/A,0
-9537,423,1,B,NBU,N/A,0
-9538,423,1,C,NBV,N/A,0
-9539,423,1,D,NBW,N/A,0
-9540,423,1,E,NBX,N/A,0
-9541,423,2,A,NBY,N/A,0
-9542,423,2,B,NBZ,N/A,0
-9543,423,2,C,NCA,N/A,0
-9544,423,2,D,NCB,N/A,0
-9545,423,2,E,NCC,N/A,0
-9546,423,3,A,NCD,N/A,0
-9547,423,3,B,NCE,N/A,0
-9548,423,3,C,NCF,N/A,0
-9549,423,3,D,NCG,N/A,0
-9550,423,3,E,NCH,N/A,0
-9551,423,4,A,NCI,N/A,0
-9552,423,4,B,NCJ,N/A,0
-9553,423,4,C,NCK,N/A,0
-9554,423,4,D,NCL,N/A,0
-9555,423,4,E,NCM,N/A,0
-9556,423,5,A,NCN,N/A,0
-9557,423,5,B,NCO,N/A,0
-9558,423,5,C,NCP,N/A,0
-9559,423,5,D,NCQ,N/A,0
-9560,423,5,E,NCR,N/A,0
-9561,423,6,A,NCS,N/A,0
-9562,423,6,B,NCT,N/A,0
-9563,423,6,C,NCU,N/A,0
-9564,423,6,D,NCV,N/A,0
-9565,423,6,E,NCW,N/A,0
->>>>>>>> 3e97a840c5c65987a85de55d74c6670b6752a460:2024-05-23_Plant.csv,,,,,,
 9566,424,1,A,NCX,N/A,0
 9567,424,1,B,NCY,N/A,0
 9568,424,1,C,NCZ,N/A,0
@@ -13236,11 +13191,7 @@ ID,SiteFK,Circle,Orientation,Code,Species,IsConifer
 9646,183,4,A,EKS,Viburnum spp.,0
 9647,183,4,C,EKU,Northern red oak,0
 9648,183,4,D,EKV,Eastern white pine,1
-<<<<<<<< HEAD:2024-06-17_Plant.csv,,,,,,
 9649,183,-4,E,NHN,Apple spp.,0
-========,,,,,,
-9649,183,4,E,EKW,Apple spp.,0
->>>>>>>> 3e97a840c5c65987a85de55d74c6670b6752a460:2024-05-23_Plant.csv,,,,,,
 9650,183,5,B,EKY,Tupelo spp.,0
 9651,183,5,C,EKZ,American sycamore,0
 9652,183,5,D,ELA,White oak,0
@@ -13256,7 +13207,6 @@ ID,SiteFK,Circle,Orientation,Code,Species,IsConifer
 9663,181,4,E,CHE,Japanese privet,0
 9664,181,5,B,CHG,American sycamore,0
 9665,181,6,B,CHL,Bitternut hickory,0
-<<<<<<<< HEAD:2024-06-17_Plant.csv,,,,,,
 9667,270,5,B,NGU,Bigtooth maple,0
 9668,270,5,C,NGV,Quaking aspen,0
 9669,270,5,D,NGW,Boxelder,0
@@ -13467,5 +13417,3 @@ ID,SiteFK,Circle,Orientation,Code,Species,IsConifer
 9876,60,4,D,BWY,Southern red oak,0
 9877,60,-5,C,NOX,Eastern redbud,0
 9878,60,5,C,BXC,Southern red oak,0
-========,,,,,,
->>>>>>>> 3e97a840c5c65987a85de55d74c6670b6752a460:2024-05-23_Plant.csv,,,,,,

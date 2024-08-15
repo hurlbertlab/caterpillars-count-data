@@ -72,7 +72,7 @@ new_species <- plants %>%
 
 # OTHERWISE STOP -- NO NEW NAMES TO CLEAN.
 
-write.csv(new_species, paste("data/plants/newSpecies_", Sys.Date(), ".csv", sep = ""), row.names = F)
+write.csv(new_species, paste("plantSpecies/newSpecies_", Sys.Date(), ".csv", sep = ""), row.names = F)
 
 
 # 4. Run new entries through ITIS with custom function.
@@ -104,7 +104,7 @@ unmatched_new_species <- filter(cleanedNewNames, is.na(cleanedNewNames$itis_id))
          notes= NA) %>%
   select(userPlantName, cleanedPlantName, sciName, genus, itis_id, rank, notes, isConifer)
 
-write.csv(unmatched_new_species, paste0("data/plants/unmatched_new_species_", Sys.Date(), ".csv"), row.names = F)    
+write.csv(unmatched_new_species, paste0("plantSpecies/unmatched_new_species_", Sys.Date(), ".csv"), row.names = F)    
 
 
 # 7. Manually go through all rows in unmatched_new_species...csv file and fill in a taxonomically valid cleanedPlantName.
@@ -112,10 +112,10 @@ write.csv(unmatched_new_species, paste0("data/plants/unmatched_new_species_", Sy
 # -- After manually fixing all entries, then read in .csv as a dataframe which will have the original userPlantName and a new cleanedPlantName.
 # -- If research does not yield a valid taxonomic name, leave cleanedPlantName as NA.
 
-listOfUnmatchedFiles = list.files('data/plants')[str_detect(list.files('data/plants'), '^unmatched_new_species')]
+listOfUnmatchedFiles = list.files('plantSpecies')[str_detect(list.files('plantSpecies'), '^unmatched_new_species')]
 mostRecentUnmatchedFile = listOfUnmatchedFiles[length(listOfUnmatchedFiles)]
 
-manually_matched_new_species <- read.csv(paste0('data/plants/', mostRecentUnmatchedFile))
+manually_matched_new_species <- read.csv(paste0('plantSpecies/', mostRecentUnmatchedFile))
 
 
 # 8. Run the cleanedPlantName column of that dataframe through cleanNamesThruITIS(), rename "Species" as "cleanedPlantName" and join the results back to the original manually created dataframe that includes both userPlantName and cleanedPlantName by cleanedPlantName.

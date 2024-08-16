@@ -122,7 +122,7 @@ manually_matched_new_species <- read.csv(paste0('plantSpecies/', mostRecentUnmat
 
 manually_matched_names_to_clean = manually_matched_new_species$cleanedPlantName[!is.na(manually_matched_new_species$cleanedPlantName)]
 
-cleanedManuallyEnteredNames = cleanNamesThruITIS(manually_matched_names_to_clean) 
+cleanedManuallyEnteredNames = cleanNamesThruITIS(unique(manually_matched_names_to_clean)) 
 
 manuallyCleanedRecordsWithITIS = left_join(manually_matched_new_species[, c('userPlantName', 'cleanedPlantName')], 
                                            cleanedManuallyEnteredNames, by = c('cleanedPlantName' = 'Species')) %>%

@@ -57,11 +57,20 @@ allBranchesWithPhotos <- surveys %>%
 plantsToIdentify = full_join(userIdentifiedBranches, allBranchesWithPhotos, by = c('Name', 'Region', 'PlantFK')) %>% 
   arrange(Name, PlantFK)
 
-# New branches with either user-entered names or photos that have not been examined before
+# New branches with either user-entered names or photos that have not been examined before.
+# - If there is only a single unique UserSuggestedName, then make that the InferredName
+# - If there is only one UserSuggestedName, NameConfidence = 2
+# - If there is only a single unique UserSuggestedName and it occurs more than once, NameConfidence = 3
+
 newPlantsToIdentify = plantsToIdentify %>%
   filter(!PlantFK %in% inferredNames$PlantFK) %>%
-  mutate(InferredName = NA,
-         NameConfidence = NA,
+  rowwise() %>%
+  mutate(InferredName = ifelse(length(unique(unlist(str_split(UserSuggestedName, ", ")))) == 1, 
+                               unique(unlist(str_split(UserSuggestedName, ", "))), NA),
+         NameConfidence = case_when(length(unlist(str_split(UserSuggestedName, ", "))) == 1 & !is.na(UserSuggestedName) ~ 2,
+                                    length(unlist(str_split(UserSuggestedName, ", "))) > 1 & 
+                                      length(unique(unlist(str_split(UserSuggestedName, ", ")))) == 1 ~ 3,
+                                    .default = NA),
          Notes = NA,
          New = 'Y')
 
@@ -80,9 +89,12 @@ oldPlantsToIdentify = plantsToIdentify %>%
 
 newInferredNames = rbind(oldPlantsToIdentify, newPlantsToIdentify)
 
-# Examine each record where New == 'Y' manually (e.g. in Excel), fill in the inferred name if there's agreement, and assign a confidence rating based on user agreement.
-# 1 is the least confident meaning there is disagreement among user-entered names, 
-# 2 could mean only one name ever entered, or that it is identifiable to genus but not species from photos
+# Examine each record where New == 'Y' manually (e.g. in Excel), fill in the inferred name if there's agreement 
+# (complete agreement is handled automatically, but in cases where e.g. 3 out of 4 UserSuggestedNames all agree
+# or better, then perhaps NameConfidence = 2), and assign a confidence rating based on user agreement.
+# 1 is the least confident meaning there is no clear consensus among user-entered names, 
+# 2 could mean only one name ever entered, or that it is identifiable to genus but not species from photos,
+#   or that there is 75-99% agreement.
 # 3 is the most confident with all entries agreeing multiple times, or photos support id.
 
 write.csv(newInferredNames, paste("plantSpecies/inferredPlantNames_", Sys.Date(), ".csv", sep = ""), row.names = F)

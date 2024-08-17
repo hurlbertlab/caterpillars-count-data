@@ -85,4 +85,4 @@ newInferredNames = rbind(oldPlantsToIdentify, newPlantsToIdentify)
 # 2 could mean only one name ever entered, or that it is identifiable to genus but not species from photos
 # 3 is the most confident with all entries agreeing multiple times, or photos support id.
 
-write.csv(newInferredNames, paste("PlantsToIdentify/inferredPlantNames_", Sys.Date(), ".csv", sep = ""), row.names = F)
+write.csv(newInferredNames, paste("plantSpecies/inferredPlantNames_", Sys.Date(), ".csv", sep = ""), row.names = F)

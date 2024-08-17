@@ -6,7 +6,8 @@ library(dplyr)
 library(stringr)
 
 # Existing table of inferred names (swap out for most recent file)
-inferredNames = read.csv("plantSpecies/inferredPlantNames_2024-03-14.csv")
+inferredNamesFiles = list.files("plantSpecies")[grepl("inferredPlantNames", list.files("plantSpecies"))]
+inferredNames = read.csv(paste0("plantSpecies/", inferredNamesFiles[length(inferredNamesFiles)]))
 
 # Read raw data files
 # This is necessary because PhotoURL and user-specified plant names are in 'surveys' and 'ArthropodSightings' tables

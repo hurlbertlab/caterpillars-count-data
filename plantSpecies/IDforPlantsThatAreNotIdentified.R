@@ -5,11 +5,17 @@
 library(dplyr)
 library(stringr)
 
-# Existing table of inferred names (swap out for most recent file)
+source('plantSpecies/cleanNamesThruITIS.r')
+
+# 1. Read in existing table of inferred names and Official Plant List
 inferredNamesFiles = list.files("plantSpecies")[grepl("inferredPlantNames", list.files("plantSpecies"))]
 inferredNames = read.csv(paste0("plantSpecies/", inferredNamesFiles[length(inferredNamesFiles)]))
 
-# Read raw data files
+officialPlantFiles = list.files("plantSpecies")[grepl("officialPlantList", list.files("plantSpecies"))]
+officialPlantList = read.csv(paste0("plantSpecies/", officialPlantFiles[length(officialPlantFiles)]))
+
+
+# 2. Read raw data files
 # This is necessary because PhotoURL and user-specified plant names are in 'surveys' and 'ArthropodSightings' tables
 sites = read.csv(list.files()[grepl("Site.csv", list.files())], header = TRUE, stringsAsFactors = FALSE)
 
@@ -20,12 +26,12 @@ plants = read.csv(list.files()[grepl("Plant.csv", list.files())], header = TRUE,
 ArthropodSighting = read.csv(list.files()[grepl("ArthropodSighting.csv", list.files())], header = TRUE, stringsAsFactors = FALSE)
 
 
-# Filtering plants to where Species is N/A. These include species which we may have evaluated previously, but it's possible that new photos or new user-entered names have been added since, so we take all of it.
+# 3. Filtering plants to where Species is N/A. These include species which we may have evaluated previously, but it's possible that new photos or new user-entered names have been added since, so we take all of it.
 unidentifiedBranches <- plants %>% 
   filter(Species == "N/A") 
 
 
-# Filtering surveys to find where PlantSpecies has a name entered by a user at least once
+# 4. Filtering surveys to find where PlantSpecies has a name entered by a user at least once
 userIdentifiedBranches <- surveys %>%
   filter(!PlantSpecies %in% c("N/A","","Hello","Dvt","Dvz","Dvt","N/a","Tree","Unknown","Unknown, will take picture")) %>%
   select(UserFKOfObserver, PlantSpecies, PlantFK) %>%
@@ -40,7 +46,7 @@ userIdentifiedBranches <- surveys %>%
   select(Name, Region, PlantFK, PlantSpecies) %>%
   rename('UserSuggestedName' = 'PlantSpecies')
 
-# All survey branches without a Species name where an arthropod photo has been taken
+# 5. All survey branches without a Species name where an arthropod photo has been taken
 allBranchesWithPhotos <- surveys %>%
   filter(ObservationMethod == "Visual") %>% 
   left_join(ArthropodSighting, by = c('ID' = 'SurveyFK')) %>%
@@ -53,11 +59,11 @@ allBranchesWithPhotos <- surveys %>%
   summarize(PhotoURL = paste(PhotoURL, collapse = ", ")) %>%
   select(Name, Region, PlantFK, PhotoURL)
 
-# Join to get one dataframe with both user-entered names as well as photos
+# 6. Join to get one dataframe with both user-entered names as well as photos
 plantsToIdentify = full_join(userIdentifiedBranches, allBranchesWithPhotos, by = c('Name', 'Region', 'PlantFK')) %>% 
   arrange(Name, PlantFK)
 
-# New branches with either user-entered names or photos that have not been examined before.
+# 7. Identify new branches with either user-entered names or photos that have not been examined before.
 # - If there is only a single unique UserSuggestedName, then make that the InferredName
 # - If there is only one UserSuggestedName, NameConfidence = 2
 # - If there is only a single unique UserSuggestedName and it occurs more than once, NameConfidence = 3
@@ -73,8 +79,8 @@ newPlantsToIdentify = plantsToIdentify %>%
                                     .default = NA),
          Notes = NA,
          New = 'Y')
-
-# Check branches that have been previously examined for which NameConfidence < 3 to see whether there are new user-entered names or photos by comparing the number of characters in the UserSuggestedNames and PhotoURL fields (if new names or photos have been added, the number will be larger)
+         
+# 8. Check branches that have been previously examined for which NameConfidence < 3 to see whether there are new user-entered names or photos by comparing the number of characters in the UserSuggestedNames and PhotoURL fields (if new names or photos have been added, the number will be larger)
 oldPlantsToIdentify = plantsToIdentify %>%
   filter(PlantFK %in% inferredNames$PlantFK) %>%
   mutate(ncharNamesNew = nchar(UserSuggestedName, keepNA = F),
@@ -87,9 +93,18 @@ oldPlantsToIdentify = plantsToIdentify %>%
          New = ifelse((ncharNamesNew > ncharNamesOld | ncharPhotoNew > ncharPhotoOld) & NameConfidence < 3, 'Y', 'N')) %>%
   select(Name, Region, PlantFK, UserSuggestedName, PhotoURL, InferredName, NameConfidence, Notes, New)
 
+
+# 9. Combine new and old plants into one dataframe
 newInferredNames = rbind(oldPlantsToIdentify, newPlantsToIdentify)
 
-# Examine each record where New == 'Y' manually (e.g. in Excel), fill in the inferred name if there's agreement 
+# 10. Join in official sciName from Official Plant List, then write to file
+inferredSciNames = left_join(newInferredNames, officialPlantList[, c('userPlantName', 'sciName')], 
+                             by = c('InferredName' = 'userPlantName')) %>%
+  rename(InferredSciName = sciName)
+
+write.csv(inferredSciNames, paste("plantSpecies/inferredPlantNames_", Sys.Date(), ".csv", sep = ""), row.names = F)
+
+# 11. Examine each record where New == 'Y' manually (e.g. in Excel), fill in the inferred name if there's agreement 
 # (complete agreement is handled automatically, but in cases where e.g. 3 out of 4 UserSuggestedNames all agree
 # or better, then perhaps NameConfidence = 2), and assign a confidence rating based on user agreement.
 # 1 is the least confident meaning there is no clear consensus among user-entered names, 
@@ -97,4 +112,35 @@ newInferredNames = rbind(oldPlantsToIdentify, newPlantsToIdentify)
 #   or that there is 75-99% agreement.
 # 3 is the most confident with all entries agreeing multiple times, or photos support id.
 
-write.csv(newInferredNames, paste("plantSpecies/inferredPlantNames_", Sys.Date(), ".csv", sep = ""), row.names = F)
+
+# 12. Re-read in manually edited file, and then find inferred names that did not match in the userPlantName field of officialPlantList, and attempt to match with ITIS.
+inferredNamesFiles = list.files("plantSpecies")[grepl("inferredPlantNames", list.files("plantSpecies"))]
+inferredSciNames = read.csv(paste0("plantSpecies/", inferredNamesFiles[length(inferredNamesFiles)]))
+
+unmatchedNames = inferredSciNames$InferredName[!is.na(inferredSciNames$InferredName) & is.na(inferredSciNames$InferredSciName)]
+
+if (length(unmatchedNames) > 0) {
+  matchedNames = cleanNamesThruITIS(unmatchedNames)
+  
+  for (n in unmatchedNames) {
+    inferredSciNames$InferredSciName[inferredSciNames$InferredName == n] = matchedNames$sciName[matchedNames$Species == n]
+  }
+}
+
+# If the unmatched names refer to good taxonomic concepts, be sure to add them to the bottom of officialPlantList
+matchedNames$notes = NA
+matchedNames$isConifer = NA
+matchedNames = cbind(data.frame(Species = unmatchedNames), matchedNames)
+names(matchedNames)[1:2] = c('userPlantName', 'cleanedPlantName')
+
+officialPlantList = rbind(officialPlantList, matchedNames)
+write.csv(officialPlantList, paste("plantSpecies/officialPlantList", Sys.Date(), ".csv", sep = ""), row.names = F)
+
+# If the unmatched names don't match in ITIS and you can figure out what they are referring to, modify the InferredName
+# value for that record so that it will be recognized by ITIS (e.g. a more commonly used name, or the scientific name).
+# Then re-run from #12 on.
+
+# For any unmatched names that don't match in ITIS and you can't figure out what taxonomic entity they are referring to,
+# simply leave InferredSciName as NA but add a note that the name is ambiguous.
+
+write.csv(inferredSciNames, paste("plantSpecies/inferredPlantNames_", Sys.Date(), ".csv", sep = ""), row.names = F)

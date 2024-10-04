@@ -59,7 +59,7 @@ matched_new_species <- filter(cleanedNewNames, !is.na(cleanedNewNames$itis_id)) 
   mutate(cleanedPlantName = userPlantName,
          isConifer = NA,
          notes= NA) %>%
-  select(userPlantName, cleanedPlantName, sciName, genus, itis_id, rank, notes, isConifer)
+  select(userPlantName, cleanedPlantName, sciName, genus, Family, itis_id, rank, notes, isConifer)
 
 officialPlantList <- rbind(officialPlantList, matched_new_species)
 
@@ -72,7 +72,7 @@ unmatched_new_species <- filter(cleanedNewNames, is.na(cleanedNewNames$itis_id))
   mutate(cleanedPlantName = NA,
          isConifer = NA,
          notes= NA) %>%
-  select(userPlantName, cleanedPlantName, sciName, genus, itis_id, rank, notes, isConifer)
+  select(userPlantName, cleanedPlantName, sciName, genus, Family, itis_id, rank, notes, isConifer)
 
 write.csv(unmatched_new_species, paste0("plantSpecies/unmatched_new_species_", Sys.Date(), ".csv"), row.names = F)    
 
@@ -98,7 +98,7 @@ manuallyCleanedRecordsWithITIS = left_join(manually_matched_new_species[, c('use
                                            cleanedManuallyEnteredNames, by = c('cleanedPlantName' = 'Species')) %>%
   mutate(isConifer = NA,
          notes = NA) %>%
-  select(userPlantName, cleanedPlantName, sciName, genus, itis_id, rank, notes, isConifer)
+  select(userPlantName, cleanedPlantName, sciName, genus, Family, itis_id, rank, notes, isConifer)
 
 
 # 9. Manually examine names that still don't match and correct where possible. Remaining unmatched names will simply be NA.

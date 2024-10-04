@@ -9,6 +9,7 @@ cleanNamesThruITIS = function(speciesList) {
   plantList = data.frame(Species = speciesList,
                          sciName = NA, 
                          genus = NA,
+                         Family = NA,
                          itis_id = NA,    
                          rank = NA)
   
@@ -27,7 +28,9 @@ cleanNamesThruITIS = function(speciesList) {
         plantList$rank[i] = hierarchy$rank[nrow(hierarchy)]
         plantList$genus[i] = ifelse(plantList$rank[i] == 'genus', plantList$sciName[i],
                                     ifelse(plantList$rank[i] == 'species', word(plantList$sciName[i], 1), NA))
-        
+        plantList$Family[i] = ifelse(plantList$rank[i] %in% c('species', 'subspecies', 'genus', 'subgenus', 
+                                                              'tribe', 'subtribe', 'family', 'subfamily'), 
+                                     hierarchy$name[hierarchy$rank == 'family'], NA)        
       } # end if there's a match
     } # end if name should be searched
   } # end for loop

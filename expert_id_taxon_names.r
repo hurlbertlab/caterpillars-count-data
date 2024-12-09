@@ -4,10 +4,25 @@
 #   so that if a connection cuts out, one can simply re-run the function and it will pick up
 #   from where it left off.
 
+# --this function searches for a name match in the following taxonomy databases in order:
+#   -NCBI
+#   -ITIS
+#   -EOL
+#   -GBIF
+#   -Wikipedia
+
+# --if there is no match, it moves onto the next database
+
+# --once a match is found, it moves onto the next name, starting again with NCBI and moving down.
+
 # --names for which Family and Order are both NA should be looked into manually,
 #   e.g. via Global Names Resolver 
 
 # --(don't use "United States Species List" or "iNaturalist" as taxon source, as taxon info above genus not returned)
+
+# NOTE: **This function should be run interactively**, as often the name might return multiple matches from a single 
+#       database, in which case the user will be prompted to make a selection in the console before the function
+#       can move on to the next name.
 
 updateExpertClassification = function() {
 
@@ -26,7 +41,8 @@ updateExpertClassification = function() {
   # Get list of names that has not already been classified previously
   newNamesToClassify = uniqueNames[!uniqueNames$TaxonName %in% classifiedNames$TaxonName & 
                                      !uniqueNames$Rank %in% c('kingdom', 'phylum', 'subphylum', 'class', 'subclass',
-                                                              'infraorder', 'order', 'suborder', 'stateofmatter'), ]
+                                                              'infraorder', 'order', 'suborder', 'stateofmatter') &
+                                     !uniqueNames$TaxonName %in% c('Homo sapiens'), ]  # names to exclude
   
   if (nrow(newNamesToClassify) > 0) {
   

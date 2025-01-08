@@ -120,7 +120,7 @@ id_rank_plot = function(dataframe, arthGroup, ...) {
 par(mfrow = c(3, 4), mar = c(3, 5, 3, 1), cex.lab =1.4, cex.axis = 1.2)
 for (a in unique(id_rank$StandardGroup)) {
   
-  id_rank_plot(id_rank, a, col = rainbow(5), main = paste(a, ", n =", id_rank$tot[id_rank$StandardGroup == a][1]))
+  foo = id_rank_plot(id_rank, a, col = rainbow(5), main = paste(a, ", n =", id_rank$tot[id_rank$StandardGroup == a][1]))
   
   mtext(c("U", "O", "F", "G", "S"), 1, at = foo, cex = 1, line = 0.5)
 }
@@ -131,7 +131,7 @@ for (a in unique(id_rank$StandardGroup)) {
 par(mfrow = c(2, 3), mar = c(3, 5, 3, 1), cex.lab =1.8, cex.axis = 1.2, cex.main = 1.4)
 for (a in c('fly', 'aphid', 'caterpillar', 'beetle', 'grasshopper', 'leafhopper')) {
   
-  id_rank_plot(id_rank, a, col = rainbow(5), main = paste(a, ", n =", id_rank$tot[id_rank$StandardGroup == a][1]))
+  foo = id_rank_plot(id_rank, a, col = rainbow(5), main = paste(a, ", n =", id_rank$tot[id_rank$StandardGroup == a][1]))
   
   mtext(c("U", "O", "F", "G", "S"), 1, at = foo, cex = 1, line = 0.5)
 }

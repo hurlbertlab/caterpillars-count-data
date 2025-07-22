@@ -6,11 +6,18 @@ library(lubridate)
 
 # (1) Filter the full dataset down to the set of years, sites, dates, etc specific to a given publication
 
-# E.g., for Hurlbert et al. 2019
+# E.g., for Pub #1, Hurlbert et al. 2019
 pubData = fullDataset %>%
   filter(Name %in% c("NC Botanical Garden", "Prairie Ridge Ecostation"),
          Year %in% 2015:2016,
          julianday %in% 130:213)
+
+
+# Pub #6, Persche, Mossman and Pidgeon 2025:
+pubData = fullDataset %>%
+  filter(grepl("BHRC", Name),
+  Year %in% 2022:2023,
+  julianday %in% 121:243)
 
 
 # (2) Run this function which will update 2 files:

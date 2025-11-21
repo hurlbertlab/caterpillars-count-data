@@ -46,7 +46,7 @@ updateExpertClassification = function() {
   
   if (nrow(newNamesToClassify) > 0) {
   
-    classify = data.frame(newNamesToClassify, Order = NA, Family = NA)
+    #classify = data.frame(newNamesToClassify, Order = NA, Family = NA)
     
     i = 1
     for (n in newNamesToClassify$TaxonName) {
@@ -69,15 +69,16 @@ updateExpertClassification = function() {
           Family = ifelse('family' %in% info$rank, info$name[info$rank == 'family'], NA)
           
           
-        } else { # if no ITIS match
+        #} else { # if no ITIS match    #CURRENTLY COMMENTED OUT AS EOL IS HAVING PROBLEMS
           
-          info = classification(n, db = 'eol')[[1]]
+          #info = classification(n, db = 'eol')[[1]]
           
-          if (is.data.frame(info)) { # if the name returns a result from EOL
+          #if (is.data.frame(info)) { # if the name returns a result from EOL
             
-            Order = ifelse('order' %in% info$rank, info$name[info$rank == 'order'], NA)
-            Family = ifelse('family' %in% info$rank, info$name[info$rank == 'family'], NA)
+          #  Order = ifelse('order' %in% info$rank, info$name[info$rank == 'order'], NA)
+          #  Family = ifelse('family' %in% info$rank, info$name[info$rank == 'family'], NA)
             
+          ## If this EOL section is brought back, be sure to also uncomment the } towards the bottom
           } else { 
             
             info = classification(n, db = 'gbif')[[1]]
@@ -104,7 +105,7 @@ updateExpertClassification = function() {
               }
             }
           }
-        }
+        #} # COMMENTED OUT FOR EOL
       } # end if no ITIS match
       
       i = i + 1

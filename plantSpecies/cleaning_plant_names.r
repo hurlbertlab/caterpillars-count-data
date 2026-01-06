@@ -58,8 +58,11 @@ matched_new_species <- filter(cleanedNewNames, !is.na(cleanedNewNames$itis_id)) 
   rename(userPlantName = Species) %>%
   mutate(cleanedPlantName = userPlantName,
          isConifer = NA,
-         notes= NA) %>%
-  select(userPlantName, cleanedPlantName, sciName, genus, Family, itis_id, rank, notes, isConifer)
+         notes= NA,
+         compoundLeaves = NA,
+         longLeafThreshold = NA) %>%
+  select(userPlantName, cleanedPlantName, sciName, genus, Family, 
+         itis_id, rank, notes, isConifer, compoundLeaves, longLeafThreshold)
 
 officialPlantList <- rbind(officialPlantList, matched_new_species)
 
@@ -71,8 +74,11 @@ unmatched_new_species <- filter(cleanedNewNames, is.na(cleanedNewNames$itis_id))
   rename(userPlantName = Species) %>%
   mutate(cleanedPlantName = NA,
          isConifer = NA,
-         notes= NA) %>%
-  select(userPlantName, cleanedPlantName, sciName, genus, Family, itis_id, rank, notes, isConifer)
+         notes= NA,
+         compoundLeaves = NA,
+         longLeafThreshold = NA) %>%
+  select(userPlantName, cleanedPlantName, sciName, genus, Family, 
+         itis_id, rank, notes, isConifer, compoundLeaves, longLeafThreshold)
 
 write.csv(unmatched_new_species, paste0("plantSpecies/unmatched_new_species_", Sys.Date(), ".csv"), row.names = F)    
 
@@ -97,8 +103,10 @@ cleanedManuallyEnteredNames = cleanNamesThruITIS(unique(manually_matched_names_t
 manuallyCleanedRecordsWithITIS = left_join(manually_matched_new_species[, c('userPlantName', 'cleanedPlantName')], 
                                            cleanedManuallyEnteredNames, by = c('cleanedPlantName' = 'Species')) %>%
   mutate(isConifer = NA,
-         notes = NA) %>%
-  select(userPlantName, cleanedPlantName, sciName, genus, Family, itis_id, rank, notes, isConifer)
+         notes = NA,
+         compoundLeaves = NA, 
+         longLeafThreshold = NA) %>%
+  select(userPlantName, cleanedPlantName, sciName, genus, Family, itis_id, rank, notes, isConifer, compoundLeaves, longLeafThreshold)
 
 
 # 9. Manually examine names that still don't match and correct where possible. Remaining unmatched names will simply be NA.

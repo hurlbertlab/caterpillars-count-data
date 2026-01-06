@@ -15,7 +15,8 @@ updateCatCountData <- function(updateExpertNames = FALSE) {
     filter(grepl(".csv", filename), 
            !filename %in% c("arthropod_length_weight_regressions.csv", 
                             "classified_expert_identifications.csv", 
-                            "taxon_ranks.csv"))
+                            "taxon_ranks.csv"),
+           !grepl("Publication", filename)) # don't remove Publications files which are handled manually
   
   unlink(oldfiles$filename)
   

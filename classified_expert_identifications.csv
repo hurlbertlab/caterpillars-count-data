@@ -175,7 +175,7 @@ subfamily,Lymantriinae,Lepidoptera,Erebidae
 species,Verrucosa arenata,Araneae,Araneidae
 family,Gomphidae,Odonata,Gomphidae
 family,Linyphiidae,Araneae,Linyphiidae
-genus,Stictocephala,Passeriformes,Thraupidae
+genus,Stictocephala,Hemiptera,Membracidae
 genus,Bassareus,Coleoptera,Chrysomelidae
 subfamily,Chironominae,Diptera,Chironomidae
 genus,Parasteatoda,Araneae,Theridiidae
@@ -209,7 +209,7 @@ genus,Brochymena,Hemiptera,Pentatomidae
 genus,Xysticus,Araneae,Thomisidae
 species,Chauliognathus marginatus,Coleoptera,Cantharidae
 subfamily,Amphipyrinae,Lepidoptera,Noctuidae
-family,Trachelidae,Coleoptera,Stenotrachelidae
+family,Trachelidae,Araneae,Trachelidae
 species,Prenolepis imparis,Hymenoptera,Formicidae
 species,Camponotus castaneus,Hymenoptera,Formicidae
 species,Lucidota atra,Coleoptera,Lampyridae
@@ -1038,7 +1038,7 @@ tribe,Crematogastrini,Hymenoptera,Formicidae
 species,Apoda biguttata,Lepidoptera,Limacodidae
 species,Stictocephala bisonia,Hemiptera,Membracidae
 genus,Aphrophora,Hemiptera,Aphrophoridae
-genus,Polypsocus,Psocoptera,Amphipsocidae
+genus,Polypsocus,Psocodea,Amphipsocidae
 species,Parasteatoda tepidariorum,Araneae,Theridiidae
 species,Neoscona arabesca,Araneae,Araneidae
 genus,Chaoborus,Diptera,Chaoboridae
@@ -1189,7 +1189,7 @@ species,Stephanitis takeyai,Hemiptera,Tingidae
 complex,Philodromus rufus,Araneae,Philodromidae
 species,Hormaphis hamamelidis,Hemiptera,Hormaphididae
 family,Drosophilidae,Diptera,Drosophilidae
-genus,Mesopsocus,Psocoptera,Mesopsocidae
+genus,Mesopsocus,Psocodea,Mesopsocidae
 genus,Chyliza,Diptera,Psilidae
 genus,Cameraria,Lepidoptera,Gracillariidae
 species,Sinea spinipes,Hemiptera,Reduviidae
@@ -1245,7 +1245,7 @@ family,Muscidae,Diptera,Muscidae
 species,Theridiosoma gemmosum,Araneae,Theridiosomatidae
 family,Oecanthidae,Orthoptera,Oecanthidae
 family,Heptageniidae,Ephemeroptera,Heptageniidae
-genus,Aaroniella,Psocoptera,Philotarsidae
+genus,Aaroniella,Psocodea,Philotarsidae
 species,Erannis tiliaria,Lepidoptera,Geometridae
 species,Aedes albopictus,Diptera,Culicidae
 genus,Caloptilia,Lepidoptera,Gracillariidae
@@ -1280,7 +1280,7 @@ tribe,Elachipterini,Diptera,Chloropidae
 species,Urgleptes signatus,Coleoptera,Cerambycidae
 species,Dioctria hyalipennis,Diptera,Asilidae
 species,Dorcaschema alternatum,Coleoptera,Cerambycidae
-species,Mesopsocus unipunctatus,Psocoptera,Mesopsocidae
+species,Mesopsocus unipunctatus,Psocodea,Mesopsocidae
 species,Chyliza apicalis,Diptera,Psilidae
 species,Neacoryphus bicrucis,Hemiptera,Lygaeidae
 tribe,Silini,Coleoptera,Cantharidae
@@ -1377,7 +1377,7 @@ species,Eustala anastera,Araneae,Araneidae
 family,Perlidae,Plecoptera,Perlidae
 species,Argyrotaenia quercifoliana,Lepidoptera,Tortricidae
 species,Cydia pomonella,Lepidoptera,Tortricidae
-species,Valenzuela flavidus,Psocoptera,Caeciliusidae
+species,Valenzuela flavidus,Psocodea,Caeciliusidae
 genus,Anotia,Hemiptera,Derbidae
 genus,Pyractomena,Coleoptera,Lampyridae
 genus,Pilophorus,Hemiptera,Miridae
@@ -1424,7 +1424,7 @@ species,Chorisoneura texensis,Blattodea,Blattellidae
 species,Euschistus tristigmus,Hemiptera,Pentatomidae
 species,Banasa calva,Hemiptera,Pentatomidae
 species,Elephantomyia westwoodi,Diptera,Limoniidae
-genus,Ectopsocus,Psocoptera,Ectopsocidae
+genus,Ectopsocus,Psocodea,Ectopsocidae
 subtribe,Chironomus group,Diptera,Chironomidae
 species,Pelecinus polyturator,Hymenoptera,Pelecinidae
 species,Battus philenor,Lepidoptera,Papilionidae

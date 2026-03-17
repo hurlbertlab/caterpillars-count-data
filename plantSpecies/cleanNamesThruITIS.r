@@ -19,7 +19,9 @@ cleanNamesThruITIS = function(speciesList) {
     
     if (!is.na(speciesList[i]) & nchar(speciesList[i]) >= 3) {  # for names that are at least 3 characters and not NA, try to match
       
-      hierarchy = classification(speciesList[i], db = 'itis', accepted = TRUE)[[1]]
+      tmpSpeciesName = str_replace(speciesList[i], " spp.", "")
+      
+      hierarchy = classification(tmpSpeciesName, db = 'itis', accepted = TRUE)[[1]]
       
       # class is logical if taxonomic name does not match any existing names
       if (!is.null(nrow(hierarchy))) {

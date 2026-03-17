@@ -36,7 +36,7 @@ new_species <- plants %>%
   rename(userPlantName = Species) %>%
   distinct(userPlantName) %>%
   # select rerun sciName entries that are NOT (!) in sciName from cleaned list
-  filter(!userPlantName %in% officialPlantList$userPlantName) 
+  filter(!userPlantName %in% c(officialPlantList$userPlantName, "NA", "Na")) 
 
 # IF THERE ARE NEW SPECIES (nrow(new_species) > 0), MOVE FORWARD. 
 
